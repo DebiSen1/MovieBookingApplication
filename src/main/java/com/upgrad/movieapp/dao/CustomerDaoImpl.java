@@ -2,6 +2,7 @@ package com.upgrad.movieapp.dao;
 
 import com.upgrad.movieapp.entities.Customer;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,9 +17,9 @@ public class CustomerDaoImpl implements CustomerDao{
 
     private SessionFactory sessionFactory; //using it for CRUD operations -> SessionFactory object is alive for whole application
 
-    //EntityManager is wrapper for SessionFactory object
-    public CustomerDaoImpl(EntityManager entityManager){
-        this.sessionFactory=entityManager.unwrap(SessionFactory.class);
+    //EntityManagerFactory is wrapper for SessionFactory object
+    public CustomerDaoImpl(EntityManagerFactory entityManagerFactory){
+        this.sessionFactory=entityManagerFactory.unwrap(SessionFactory.class);
     }
 
     @Override
